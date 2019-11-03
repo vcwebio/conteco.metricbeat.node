@@ -12,7 +12,7 @@ RUN chmod -R 555 /conteco
 
 ##### BEGIN image/Dockerfile/build-instructions #####
 COPY ./conteco/configs/usr/share/metricbeat/metricbeat.yml /usr/share/metricbeat/metricbeat.yml
-USER metricbeat
+#USER metricbeat
 ##### END image/Dockerfile/build-instructions #####
 
 ##### BEGIN image/Dockerfile/env-labels-footer #####
