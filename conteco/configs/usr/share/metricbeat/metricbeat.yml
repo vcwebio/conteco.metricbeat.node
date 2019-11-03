@@ -1,0 +1,52 @@
+
+metricbeat.modules:
+
+- module: system
+  metricsets:
+    - cpu
+    - load
+    - memory
+    - network
+    - process
+    - process_summary
+    - uptime
+    - socket_summary
+    - diskio
+  enabled: true
+  period: 10s
+  processes: ['.*']
+  cpu.metrics:  ["percentages"]
+  core.metrics: ["percentages"]
+
+- module: docker
+  metricsets:
+  - cpu
+  - diskio
+  - healthcheck
+  - info
+  - memory
+  - network
+  hosts: ["unix:///var/run/docker.sock"]
+  period: 10s
+  fields:
+    source: metricbeat-node
+
+- module: docker
+  metricsets:
+  - container
+  hosts: ["unix:///var/run/docker.sock"]
+  period: 1m
+  fields:
+    source: metricbeat-node
+  
+output.elasticsearch:
+  enabled: true
+  hosts: 'elasticsearch:9200'
+
+setup.kibana.host: "kibana:5601"
+setup.dashboards.enabled: true
+
+logging.level: warning
+logging.metrics.enabled: false
+logging.metrics.period: 30s
+logging.json: false
