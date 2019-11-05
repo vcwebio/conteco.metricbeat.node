@@ -17,6 +17,7 @@ metricbeat.modules:
   processes: ['.*']
   cpu.metrics:  ["percentages"]
   core.metrics: ["percentages"]
+  fields_under_root: true
 
 - module: docker
   metricsets:
@@ -30,6 +31,7 @@ metricbeat.modules:
   period: 10s
   fields:
     source: metricbeat-node
+  fields_under_root: true
 
 - module: docker
   metricsets:
@@ -38,13 +40,11 @@ metricbeat.modules:
   period: 1m
   fields:
     source: metricbeat-node
+  fields_under_root: true
   
-output.elasticsearch:
+output.console:
   enabled: true
-  hosts: 'elasticsearch:9200'
-
-setup.kibana.host: "kibana:5601"
-setup.dashboards.enabled: true
+  pretty: false
 
 logging.level: warning
 logging.metrics.enabled: false
