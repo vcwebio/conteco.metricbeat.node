@@ -17,6 +17,8 @@ metricbeat.modules:
   processes: ['.*']
   cpu.metrics:  ["percentages"]
   core.metrics: ["percentages"]
+  fields:
+    source: node-metrics
   fields_under_root: true
 
 - module: docker
@@ -30,7 +32,7 @@ metricbeat.modules:
   hosts: ["unix:///var/run/docker.sock"]
   period: 10s
   fields:
-    source: metricbeat-node
+    source: node-metrics
   fields_under_root: true
 
 - module: docker
@@ -39,7 +41,7 @@ metricbeat.modules:
   hosts: ["unix:///var/run/docker.sock"]
   period: 1m
   fields:
-    source: metricbeat-node
+    source: node-metrics
   fields_under_root: true
   
 output.console:

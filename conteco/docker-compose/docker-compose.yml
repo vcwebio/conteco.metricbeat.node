@@ -7,7 +7,7 @@ services:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.metricbeat.node:7.1.1
     environment: [] 
     command: []
-    volumes: ['/var/run/docker.sock:/var/run/docker.sock:ro','/proc:/hostfs/proc:ro']
+    volumes: ['/etc:/hostfs/etc:ro','/var/run/docker.sock:/var/run/docker.sock:ro','/proc:/hostfs/proc:ro']
     ports: []
     networks: [${CONTECO_DC_METRICBEAT_NODE_NETWORKS}]
     deploy:
