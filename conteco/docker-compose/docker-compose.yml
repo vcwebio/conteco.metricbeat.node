@@ -5,20 +5,21 @@ services:
 # START SERVICE metricbeat.node
   metricbeat:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.metricbeat.node:7.1.1
-    environment: [] 
+    environment: []
     command: []
     volumes: ['/etc:/hostfs/etc:ro','/var/run/docker.sock:/var/run/docker.sock:ro','/proc:/hostfs/proc:ro']
     ports: []
     networks: [${CONTECO_DC_METRICBEAT_NODE_NETWORKS}]
     deploy:
       mode: global
-      resources: 
-        limits: 
+      resources:
+        limits:
           cpus: '${CONTECO_DC_METRICBEAT_NODE_DEPLOY_RESOURCES_LIMITS_CPUS}'
           memory: '${CONTECO_DC_METRICBEAT_NODE_DEPLOY_RESOURCES_LIMITS_MEMORY}'
         reservations:
           cpus: '${CONTECO_DC_METRICBEAT_NODE_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
           memory: '${CONTECO_DC_METRICBEAT_NODE_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
+      labels: [${CONTECO_DC_METRICBEAT_NODE_DEPLOY_LABELS}]
 # END SERVICE metricbeat.node
 
 volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
