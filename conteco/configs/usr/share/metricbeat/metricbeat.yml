@@ -1,49 +1,27 @@
+fields:
+  source: node-metrics
 
 metricbeat.modules:
 
 - module: system
-  metricsets:
-    - cpu
-    - load
-    - memory
-    - network
-    - process
-    - process_summary
-    - uptime
-    - socket_summary
-    - diskio
+  metricsets: ["cpu", "load", "memory", "network", "process", "process_summary", "uptime", "socket_summary", "diskio"]
   enabled: true
-  period: 10s
+  period: 30s
   processes: ['.*']
-  cpu.metrics:  ["percentages"]
+  cpu.metrics:  ["normalized_percentages"]
   core.metrics: ["percentages"]
-  fields:
-    source: node-metrics
-  fields_under_root: true
 
 - module: docker
-  metricsets:
-  - cpu
-  - diskio
-  - healthcheck
-  - info
-  - memory
-  - network
+  metricsets: ["cpu", "diskio", "healthcheck", "info", "memory", "network"]
   hosts: ["unix:///var/run/docker.sock"]
-  period: 10s
-  fields:
-    source: node-metrics
-  fields_under_root: true
+  period: 30s
 
 - module: docker
   metricsets:
   - container
   hosts: ["unix:///var/run/docker.sock"]
   period: 1m
-  fields:
-    source: node-metrics
-  fields_under_root: true
-  
+
 output.console:
   enabled: true
   pretty: false
