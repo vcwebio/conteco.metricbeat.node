@@ -9,7 +9,7 @@ services:
     command: []
     volumes: ['/etc:/hostfs/etc:ro','/var/run/docker.sock:/var/run/docker.sock:ro','/proc:/hostfs/proc:ro']
     ports: []
-    networks: [${CONTECO_ECOSYSTEM}_overlay]
+    networks: [${CONTECO_DC_METRICBEAT_NODE_NETWORKS}]
     deploy:
       mode: global
       resources:
@@ -22,5 +22,5 @@ services:
       labels: []
 # END SERVICE metricbeat.node
 
-volumes: {}
-networks: {${CONTECO_ECOSYSTEM}_overlay: { external: true }}
+volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
