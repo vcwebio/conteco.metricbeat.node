@@ -4,7 +4,7 @@ fields:
 metricbeat.modules:
 
 - module: system
-  metricsets: ["cpu", "diskio", "filesystem", "fstat", "load", "memory", "network", "process_summary", "socket_summary", "uptime"]
+  metricsets: ["cpu", "diskio", "filesystem", "fsstat", "load", "memory", "network", "process_summary", "socket_summary", "uptime"]
   enabled: true
   period: 30s
   processes: ['.*']
