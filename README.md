@@ -1,10 +1,12 @@
-# The Conteco Metricbeat node
+# The `metricbeat.node` - ConteEco
 
-The ContEco Metricbeat image is preconfigured to monitor the swarm nodes and feeding directly into Kafka.
+The ElasticSearch Metricbeat base image configured for system and docker monitoring.
+See `conteco.docs.overview` for more information on the ContEco ecosystem.
 
-## Aim
+## Configuration Changes
 
-This is a preconfigured image designed to monitor cluster (swarm) nodes.  
+Configured to monitor system and docker with a frequency of 30s.  
+The output is parameterised to choose between console, ElasticSearch and Kafka.
 
 ## Tags
 

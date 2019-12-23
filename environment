@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-export CONTECO_LABEL="Conteco metricbeat node"
-export CONTECO_DESCRIPTION="The ElasticSearch Metricbeat for cluster node monitoring feeding directly into Kafka."
+export CONTECO_LABEL="metricbeat.node - ConteEco"
+export CONTECO_DESCRIPTION="The ElasticSearch Metricbeat base image configured for system and docker monitoring."
 
 export CONTECO_TYPE="metricbeat"
 export CONTECO_NAME="node"
