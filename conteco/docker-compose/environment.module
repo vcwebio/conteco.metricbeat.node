@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS=''metricbeat.node''
+export CONTECO_DC_GLOBAL_STACKS='metricbeat.node'
+export CONTECO_DC_GLOBAL_STACKNAMES='metricbeat_node'
+export CONTECO_DC_GLOBAL_VOLUME_LIST='metricbeat_node_volume'
 # END CONFIGURATION
 
 # START OTHER VARIABLES
@@ -16,6 +18,8 @@ export CONTECO_DC_METRICBEAT_NODE_ENVIRONMENT_OUTPUT_CONFIG_KAFKA_TOPIC="test"
 # END OTHER VARIABLES
 
 # START VOLUMES VARIABLES
+export CONTECO_DC_METRICBEAT_NODE_VOLUMES="'/etc:/hostfs/etc:ro','/var/run/docker.sock:/var/run/docker.sock:ro','/proc:/hostfs/proc:ro','${CONTECO_TYPE}_metricbeat_node_volume:/usr/share/metricbeat/data'"
+export CONTECO_DC_GLOBAL_VOLUMES=""
 # END VOLUMES VARIABLES
 
 # START PORTS VARIABLES
