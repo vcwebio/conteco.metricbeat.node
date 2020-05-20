@@ -17,11 +17,11 @@ metricbeat.modules:
   hosts: ["unix:///var/run/docker.sock"]
   period: 30s
 
-- module: docker
-  metricsets:
-  - container
-  hosts: ["unix:///var/run/docker.sock"]
-  period: 1m
+#- module: docker
+#  metricsets:
+#  - container
+#  hosts: ["unix:///var/run/docker.sock"]
+#  period: 1m
 
 output.console:
   enabled: ${ES_METRICBEAT_OUTPUT_CONSOLE:false}
